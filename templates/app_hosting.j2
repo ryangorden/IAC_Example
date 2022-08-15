@@ -1,0 +1,11 @@
+{% for app in config_context["app_hosting"] %}
+app-hosting appid {{ app.appid }}
+ app-vnic {{ app.app_vnic.interface_name }} {{ app.app_vnic.access_type }} {% if app.app_vnic.access_type == "access" %}
+  {{ app.app_vnic.interface.interface_name }} {{ app.app_vnic.interface.interface_id }}
+  run-opts {{ app.app_resource.line }} "{{ app.app_resource.runtime_options }}" {% else %} 
+  vlan {{ app.app_vnic.vlan.id }} {{ app.app_vnic.vlan.interface_name }} {{ app.app_vnic.vlan.interface_id }}
+   {{ app.app_vnic.vlan.interface_name }} {{ app.app_vnic.vlan.interface_ipaddr.ip_address }} netmask {{ app.app_vnic.vlan.interface_ipaddr.netmask }} {% endif %}
+ app-default-gateway {{ app.app_default_gateway.ip_address }} {{ app.app_default_gateway.interface_name }} {{ app.app_default_gateway.interface_id }}
+ app-resource {{ app.app_resource.runtime }}
+  run-opts {{ app.app_resource.line }} "{{ app.app_resource.runtime_options }}"
+{% endfor %}
