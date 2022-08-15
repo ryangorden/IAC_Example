@@ -1,0 +1,45 @@
+---
+_metadata:
+  name: "DNAC9300"
+  weight: 1000
+  description: "Device Definitions"
+  is_active: true
+  # schema variable must match the name file in the scheme file
+  schema: "dnac9300.local"
+app_hosting:
+  - appid: monitoring
+    app_vnic:
+      interface_name: "AppGigabitEthernet"
+      access_type: trunk
+      vlan:
+        id: 1
+        interface_name: guest-interface
+        interface_id: 0
+        interface_ipaddr:
+          ip_address: 10.0.19.221
+          netmask: 255.255.255.240
+    app_default_gateway:
+      ip_address: 10.0.19.209
+      interface_name: guest-interface
+      interface_id: 0
+    app_resouce:
+      runtime: docker
+      line: 1
+      runtime_options: --restart=unless-stopped -p 80:8080/tcp
+    docker_tar_file: "webapp.tar"
+  - appid: lab_rat
+    app_vnic:
+      interface_name: "AppGigabitEthernet"
+      access_type: access
+      interface:
+        interface_name: guest-interface
+        interface_id: 0
+    app_default_gateway:
+      ip_address: 10.0.19.209
+      interface_name: guest-interface
+      interface_id: 0
+    app_resouce:
+      runtime: docker
+      line: 1
+      runtime_options: --restart=unless-stopped -p 81:8080/tcp
+    docker_tar_file: "webapp.tar"
