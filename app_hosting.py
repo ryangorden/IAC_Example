@@ -13,6 +13,11 @@ with open('config_data/config_contexts_schemes/dnac9300.local.yml') as file:
 with open('config_data/config_contexts/devices/dnac9300.local.yml') as file:
     good_instance = safe_load(file)
 
+# TODO: Add file validate
+# data file schema field must match name of name field in schema file.
+# if not exit
+    
+    
 # if None is returned validate passess
 validate= (validate(good_instance, schema)) # passes
 print(validate)
