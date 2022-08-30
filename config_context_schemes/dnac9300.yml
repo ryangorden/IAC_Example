@@ -1,70 +1,64 @@
----
-_metadata:
-  name: "dnac9300.local"
-  description: "Schema for Cisco IOS-XE platform."
-data_schema:
-  title: "Cisco IOS-XE Schema"
-  type: "object"
-  properties:
-    app_hosting:
-      type: "array"
-      items:
-        type: "object"
-        properties:
-          appid: 
-            type: "string"
-          app_vnic:
-            type: object
-            properties:
-              interface_name:
-                type: "string"
-              access_type:
-                type: "string"
-              interface:
-                type: "object"
-                properties:
-                  interface_name: 
-                    type: "string"
-                  interface_id:
-                    type: "integer"
-              vlan:
-                type: object
-                properties:
-                  id: 
-                    type: "integer"
-                  interface_name:
-                    type: "string"
-                  interface_id: 
-                    type: "integer"
-                  interface_ipaddr:
-                    type: object
-                    properties:
-                      ip_address:
-                        type: "string"
-                        format: "ipv4"
-                      netmask:
-                        type: "string"
-                        format: "ipv4"
-          app_default_gateway:
-            type: object
-            properties:
-              ip_address:
-                type: "string"
-                format:  "ipv4"
-              interface_name: 
-                type: "string"
-              interface_id:
-                type: "integer"
-          app_resource:
-            type: object
-            properties:
-              runtime:
-                type: "string"
-              line: 
-                type: "integer"
-              runtime_options: 
-                type: "string"
-          docker_tar_file:
-            type: "string"
-        required:
-          - "appid"
+type: "object"
+properties:
+  app_hosting:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        appid: 
+          type: "string"
+        app_vnic:
+          type: object
+          properties:
+            interface_name:
+              type: "string"
+            access_type:
+              type: "string"
+            interface:
+              type: "object"
+              properties:
+                interface_name: 
+                  type: "string"
+                interface_id:
+                  type: "integer"
+            vlan:
+              type: object
+              properties:
+                id: 
+                  type: "integer"
+                interface_name:
+                  type: "string"
+                interface_id: 
+                  type: "integer"
+                interface_ipaddr:
+                  type: object
+                  properties:
+                    ip_address:
+                      type: "string"
+                      format: "ipv4"
+                    netmask:
+                      type: "string"
+                      format: "ipv4"
+        app_default_gateway:
+          type: object
+          properties:
+            ip_address:
+              type: "string"
+              format:  "ipv4"
+            interface_name: 
+              type: "string"
+            interface_id:
+              type: "integer"
+        app_resource:
+          type: object
+          properties:
+            runtime:
+              type: "string"
+            line: 
+              type: "integer"
+            runtime_options: 
+              type: "string"
+        docker_tar_file:
+          type: "string"
+      required:
+        - "appid"
