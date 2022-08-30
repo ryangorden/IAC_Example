@@ -1,11 +1,11 @@
 ---
-_metadata:
-  name: "DNAC9300"
-  weight: 1000
-  description: "Device Definitions"
-  is_active: true
-  # schema variable must match the name file in the scheme file
-  schema: "dnac9300.local"
+# _metadata:
+#   name: "DNAC9300"
+#   weight: 1000
+#   description: "Device Definitions"
+#   is_active: true
+#   # schema variable must match the name file in the scheme file
+#   schema: "dnac9300.local"
 app_hosting:
   - appid: monitoring
     app_vnic:
