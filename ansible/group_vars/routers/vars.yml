@@ -1,0 +1,13 @@
+# lifetime must be equal to or less than the other side
+ike_phase_1:
+  - enabled: true
+    priority_number: 100 # lower has higher priority
+    authentication: pre-share
+    encryption: aes
+    hash: sha
+    lifetime: 86400 # in seconds
+ike_phase_2:
+  - name: CCNP_LAB
+    authentication: esp-aes
+    mode: tunnel
+    lifetime: 300 # default is one hour

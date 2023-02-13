@@ -1,0 +1,5 @@
+{% for policy in data.ike_phase_2 %}
+crypto ipsec transform-set {{ policy.name }} {{ policy.authentication}}
+ mode {{ policy.mode }}
+crypto ipsec security-association lifetime seconds {{ policy.lifetime }}
+{% endfor %}

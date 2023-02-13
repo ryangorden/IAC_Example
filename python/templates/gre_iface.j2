@@ -1,0 +1,7 @@
+interface {{ tunnel_number }}
+ tunnel source {{ iface }}
+ tunnel destination {{ real_remote_ip_addr }}
+ ip address {{ ip }} {{ netmask }}
+ bandwith {{ speed }}
+ keepalive {{ seconds }} {{ retries }}
+ ip mtu {{ size }}

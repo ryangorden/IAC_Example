@@ -1,0 +1,9 @@
+{% for policy in data.ike_phase_1 %}
+{% if policy.enabled %}
+crypto isakmp enable {% endif %}
+crypto isakmp policy {{ policy.priority_number }}
+authentication {{ policy.authentication }}
+encryption {{ policy.encryption }}
+hash {{ policy.hash }}
+lifetime {{ policy.lifetime }}
+{% endfor %}

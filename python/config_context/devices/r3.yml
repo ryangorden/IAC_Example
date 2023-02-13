@@ -1,0 +1,43 @@
+# lifetime must be equal to or less than the other side
+ike_phase_1:
+  - enabled: true
+    priority_number: 100 # lower has higher priority
+    authentication: pre-share
+    encryption: aes
+    hash: sha
+    lifetime: 86400 # in seconds
+ike_keys:
+  - secret: CCNP
+    remote_ip_addr: 172.12.123.1
+    remote_fqdn: r1.local
+# both side must match exactly
+ike_phase_2:
+  - name: CCNP_LAB
+    authentication: esp-aes
+    mode: tunnel
+    lifetime: 300 # default is one hour
+acls:
+ - name: "103"
+   entries:
+     - action: permit
+       protocol: ip
+       src_ip:
+       src_network: 10.100.3.0
+       src_inverse_mask: 0.0.0.255
+       src_port:
+       dest_ip:
+       dest_network: 10.100.1.0
+       dest_inverse_mask: 0.0.0.255
+       dest_port:
+crypto_map:
+  name: CCNP
+  entries:
+    - seq_num: 100
+      mode: ipsec-isakmp
+      acl_name: "103"
+      peer: 172.12.123.1 # ip or fqdn
+      transform_set_name: CCNP_LAB
+ike_show_commands:
+   - show crypto isakmp policy
+   - show isakmp sa
+   - debug crypto ipsec

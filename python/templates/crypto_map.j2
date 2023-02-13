@@ -1,0 +1,7 @@
+{% for entry in data.crypto_map.entries %}
+crypto map {{ data.crypto_map.name }} {{ entry.seq_num }} {{ entry.mode }}
+ match {{ entry.acl_name }}
+ set peer {{ entry.peer }}
+ set transform {{ entry.transform_set_name }}
+{% endfor %}
+

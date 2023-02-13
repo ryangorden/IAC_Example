@@ -1,0 +1,6 @@
+{% for key in data.ike_keys %}
+{% if key.remote_fqdn %}
+crypto isakmp key 6 {{ key.secret }} hostname {{ key.remote_fqdn }} {% else %}
+crypto isakmp key 6 {{ key.secret }} address {{ key.remote_ip_addr }}
+{% endif %}
+{% endfor %}

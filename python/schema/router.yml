@@ -1,0 +1,97 @@
+type: "object"
+properties:
+  ike_phase_1:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        enabled: 
+          type: "boolean"
+        priority_number:
+          type: "integer"
+        authentication:
+          type: "string"
+        encryption:
+          type: "string"
+        hash:
+          type: "string"
+        lifetime:
+          type: "integer"
+  ike_keys:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        secret:
+          type: "string"
+        remote_ip_addr: 
+          type: "string"
+        remote_fqdn:
+          type: "string"
+  ike_phase_2:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        authentication:
+          type: "string"
+        mode:
+          type: "string"
+        lifetime:
+          type: "integer"
+  acls:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        entries:
+          type: "array"
+          properties:
+            action:
+              type: "string"
+            protocol:
+              type: "string"      
+            src_ip:
+              type: "string"
+            src_network:
+              type: "string"
+            src_inverse_mask:
+              type: "string"
+            src_port:
+              type: "integer"
+            dest_ip:
+              type: "string"
+            dest_network:
+              type: "string"
+            dest_inverse_mask:
+              type: "string"
+            dest_port:
+              type: "integer"
+  crypto_map:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      entries:
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            seq_num:
+              type: "integer"
+            mode:
+              type: "string"
+            acl_name:
+              type: "string"
+            peer:
+              type: "string"
+            transform_set_name:
+              type: "string"
+
+
+
+

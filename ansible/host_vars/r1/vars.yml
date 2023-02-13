@@ -1,0 +1,17 @@
+ike_keys:
+  - secret: CCNP
+    remote_ip_addr: 172.12.123.3
+    remote_fqdn: r3.local
+acls:
+ - name: "103"
+   entries:
+     - action: permit
+       protocol: ip
+       src_ip:
+       src_network: 10.100.1.0
+       src_inverse_mask: 0.0.0.255
+       src_port:
+       dest_ip:
+       dest_network: 10.100.3.0
+       dest_inverse_mask: 0.0.0.255
+       dest_port:

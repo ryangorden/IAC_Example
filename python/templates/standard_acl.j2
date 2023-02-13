@@ -1,0 +1,5 @@
+{% for acp in data.acls %}
+{% for ace in acp.entries %}
+access-list {{ acp.name }} {{ ace.action }} {{ ace.protocol }} {{ ace.src_network }} {{ ace.src_inverse_mask}} {{ ace.dest_network }} {{ ace.dest_inverse_mask}}
+{% endfor %}
+{% endfor %}
